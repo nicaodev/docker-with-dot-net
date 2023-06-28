@@ -16,7 +16,7 @@ public class DockerTestController : ControllerBase
             };
 
     [HttpGet]
-    public ActionResult<Dictionary<string, string>> Get()
+    public ActionResult<Dictionary<string, string>> FirstCommands()
     {
         return Ok(meuDicionario);
     }
