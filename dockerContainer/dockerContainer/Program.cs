@@ -7,17 +7,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//var host = builder.Configuration["DBHOST"] ?? "localhost";
+//var port = builder.Configuration["DBPORT"] ?? "3306";
+//var password = builder.Configuration["DBPASSWORD"] ?? "159753";
+
 var host = builder.Configuration["DBHOST"] ?? "localhost";
-var port = builder.Configuration["DBPORT"] ?? "3306";
-var password = builder.Configuration["DBPASSWORD"] ?? "159753";
+var port = 3306;
+var password = 159753;
 
-string mySqlConnection = $"server={host};userid=root;pwd={password};port={port};database=testeDocker";
+//string mySqlConnection = $"Server={host}; Port={port}; Database=testeDocker; Uid=root; Pwd={password}";
+string mySqlConnection = $"server={host};userid=root;pwd={password};port={port};database=testeDockerdb";
 
-builder.Services.AddDbContext<TesteDockerContext>(opt => opt.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+
+//var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<ITesteDockerRepository, TesteDockerRepository>();
+
+builder.Services.AddDbContext<TesteDockerContext>(options => options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
 builder.Services.AddControllers();
-
-builder.Services.AddTransient<ITesteDockerRepository, TesteDockerRepository>();
 
 var app = builder.Build();
 

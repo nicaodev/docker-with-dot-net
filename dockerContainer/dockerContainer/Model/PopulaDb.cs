@@ -23,11 +23,11 @@ public class PopulaDb
 
             context.testeDockers.AddRange(
 
-                new TesteDockerDto("Testando Volumes com Docker", "Docker volume ls", "Nicolas Alexandre"),
-                new TesteDockerDto("Primeiro - Realease", "dotnet publish --configuration Release --output dist", "Nicolas Alexandre"),
-                new TesteDockerDto("Segundo - Cria imagem docker", "docker build -t testedocker .", "Nicolas Alexandre"),
-                new TesteDockerDto("Terceiro - Cria container", "docker container create -p 3000:80 --name dockertest2 testedocker", "Nicolas Alexandre"),
-                new TesteDockerDto("Quarto - Start container criado", "docker container start dockertest2", "Nicolas Alexandre")
+                new TesteDockerDto("Testando Volumes com Docker", "", "Nicolas Alexandre"),
+                new TesteDockerDto("Primeiro - Criar Volume", "docker volume create dadosdb", "Nicolas Alexandre"),
+                new TesteDockerDto("Segundo - Cria imagem docker", "docker image pull mysql:5.7", "Nicolas Alexandre"),
+                new TesteDockerDto("Terceiro - Inspeciona (checar qual pasta usa-se para Volume que a imagem do container)", "docker image inspect mysql:5.7", "Nicolas Alexandre"),
+                new TesteDockerDto("Quarto - Criar Container a partir da imagem", "docker container run -d --name mysql -v dadosdb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=159753 mysql:5.7", "Nicolas Alexandre")
                 );
 
             context.SaveChanges();

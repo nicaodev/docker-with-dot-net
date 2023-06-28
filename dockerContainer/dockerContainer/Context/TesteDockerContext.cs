@@ -5,10 +5,9 @@ namespace dockerContainer.Context;
 
 public class TesteDockerContext : DbContext
 {
-    public TesteDockerContext()
-    {
-    }
-    public TesteDockerContext(DbContextOptions<TesteDockerContext> opt) : base(opt)
+    public TesteDockerContext(){}
+
+    public TesteDockerContext(DbContextOptions<TesteDockerContext> options) : base(options)
     {
     }
 
