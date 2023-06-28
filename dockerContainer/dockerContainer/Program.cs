@@ -24,11 +24,13 @@ string mySqlConnection = $"server={host};userid=root;pwd={password};port={port};
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<ITesteDockerRepository, TesteDockerRepository>();
 
+
 builder.Services.AddDbContext<TesteDockerContext>(options => options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
 
 PopulaDb.IncluiDadosDb(app);
 

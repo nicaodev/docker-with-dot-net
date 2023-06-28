@@ -7,8 +7,7 @@ public class PopulaDb
 {
     public static void IncluiDadosDb(IApplicationBuilder app)
     {
-        IncluiDadosDb(
-            app.ApplicationServices.GetRequiredService<TesteDockerContext>());
+        IncluiDadosDb(app.ApplicationServices.GetRequiredService<TesteDockerContext>());
     }
 
     private static void IncluiDadosDb(TesteDockerContext context)

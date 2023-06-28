@@ -1,3 +1,5 @@
+using dockerContainer.Model;
+using dockerContainer.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dockerContainer.Controllers;
@@ -6,6 +8,8 @@ namespace dockerContainer.Controllers;
 [Route("[controller]")]
 public class DockerTestController : ControllerBase
 {
+
+    private readonly ITesteDockerRepository _testeDockerRepository;
     private Dictionary<string, string> meuDicionario = new Dictionary<string, string>
             {
                 { "Testando", "Docker" },
@@ -15,9 +19,20 @@ public class DockerTestController : ControllerBase
                 {"Quarto - Start container criado","docker container start dockertest2"}
             };
 
+    public DockerTestController(ITesteDockerRepository testeDockerRepository)
+    {
+        _testeDockerRepository = testeDockerRepository;
+    }
+
     [HttpGet]
     public ActionResult<Dictionary<string, string>> FirstCommands()
     {
         return Ok(meuDicionario);
+    }
+
+    [HttpGet("scriptVolume")]
+    public ActionResult<TesteDockerDto> scriptVolume()
+    {
+        return Ok(_testeDockerRepository.TesteDockers);
     }
 }
