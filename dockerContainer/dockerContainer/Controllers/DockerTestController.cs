@@ -10,7 +10,7 @@ public class DockerTestController : ControllerBase
             {
                 { "Testando", "Docker" },
                 { "Primeiro - Realease",  "dotnet publish --configuration Release --output dist" },
-                { "Segundo - Cria imagem docker", "docker build -t testedocker ." },
+                { "Segundo - Cria imagem docker", "docker build -t testedocker ." }, // Com base no Dockerfile
                 {"Terceiro - Cria container","docker container create -p 3000:80 --name dockertest2 testedocker"},
                 {"Quarto - Start container criado","docker container start dockertest2"}
             };
