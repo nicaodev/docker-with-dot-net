@@ -27,7 +27,7 @@ public class PopulaDb
                 new TesteDockerDto("Primeiro - Criar Volume", "docker volume create dadosdb", "Nicolas Alexandre"),
                 new TesteDockerDto("Segundo - Cria imagem docker", "docker image pull mysql:5.7", "Nicolas Alexandre"),
                 new TesteDockerDto("Terceiro - Inspeciona (checar qual pasta usa-se para Volume que a imagem do container)", "docker image inspect mysql:5.7", "Nicolas Alexandre"),
-                new TesteDockerDto("Quarto - Criar Container a partir da imagem", "docker container run -d --name mysql -v dadosdb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=159753 mysql:5.7", "Nicolas Alexandre")
+                new TesteDockerDto("Quarto - Criar Container a partir da imagem", "docker container run -d --name mysql -v dadosdb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=159753 -e bind-addres=0.0.0.0 mysql:5.7", "Nicolas Alexandre")
                 );
 
             context.SaveChanges();
