@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dockerContainer.Model;
 
-public class PopulaDb
+public static class PopulaDb
 {
     public static void IncluiDadosDb(IApplicationBuilder app)
     {
-        IncluiDadosDb(app.ApplicationServices.GetRequiredService<TesteDockerContext>());
+        //IncluiDadosDb(app.ApplicationServices.GetRequiredService<TesteDockerContext>());
+
+        IncluiDadosDb(app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<TesteDockerContext>());
     }
 
     private static void IncluiDadosDb(TesteDockerContext context)
@@ -16,7 +18,7 @@ public class PopulaDb
 
         context.Database.Migrate();
 
-        if (!context.testeDockers.Any())
+        if (context.testeDockers is null)
         {
             Console.WriteLine("Escrevendo dados no DB");
 
