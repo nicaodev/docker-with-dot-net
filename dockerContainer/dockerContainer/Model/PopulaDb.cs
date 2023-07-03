@@ -18,7 +18,7 @@ public static class PopulaDb
 
         context.Database.Migrate();
 
-        if (context.testeDockers is null)
+        if (!context.testeDockers.Any())
         {
             Console.WriteLine("Escrevendo dados no DB");
 
