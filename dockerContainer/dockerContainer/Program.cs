@@ -7,16 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//var host = builder.Configuration["DBHOST"] ?? "localhost";
-//var port = builder.Configuration["DBPORT"] ?? "3306";
-//var password = builder.Configuration["DBPASSWORD"] ?? "159753";
-
 var host = builder.Configuration["DBHOST"] ?? "localhost";
-var port = 3306;
-var password = 159753;
+var port = builder.Configuration["DBPORT"] ?? "3306";
+var password = builder.Configuration["DBPASSWORD"] ?? "159753";
+
+//var host = builder.Configuration["DBHOST"] ?? "localhost";
+//var port = 3306;
+//var password = 159753;
 
 //string mySqlConnection = $"Server={host}; Port={port}; Database=testeDocker; Uid=root; Pwd={password}";
-string mySqlConnection = $"server={host};userid=root;pwd={password};port={port};database=testeDockerdb";
+string mySqlConnection = $"server={host};userid=root;pwd={password};port={port};database=DockerCompose";
 
 
 //var connection = builder.Configuration.GetConnectionString("DefaultConnection");
