@@ -36,7 +36,9 @@ public static class PopulaDb
                 new TesteDockerDto("9 - Verificando sintaxe do arquivo.yml", "docker-compose build", "Nicolas Alexandre"),
                 new TesteDockerDto("10 - Fazendo teste com arquivo.yml (Processa arquivo e inicia aplicação)", "docker-compose up -d", "Nicolas Alexandre"),
                 new TesteDockerDto("10 - Remove containers e redes descritas no arquivo.yml", "docker-compose down -v", "Nicolas Alexandre"),
-                new TesteDockerDto("11 - Builder final Docker Compose", "docker-compose -f docker-compose.yml build ", "Nicolas Alexandre")
+                new TesteDockerDto("11 - Builder final Docker Compose", "docker-compose -f docker-compose.yml build ", "Nicolas Alexandre"),
+                new TesteDockerDto("11 - Builder final Docker Compose - Quando nome não é o padrao (docker-compose.yml)", "docker-compose -f docker-compose-dev.yml -p dev build", "Nicolas Alexandre"),
+                new TesteDockerDto("11 - Fazendo teste com arquivo.yml (Processa arquivo e inicia aplicação)", "docker-compose -f docker-compose-dev.yml -p dev up mvc ", "Nicolas Alexandre")
                 );
 
             context.SaveChanges();

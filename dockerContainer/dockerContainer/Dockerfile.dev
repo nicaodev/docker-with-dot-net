@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY dockerContainer.csproj .
+
+RUN dotnet restore
+
+COPY . .
+
+RUN dotnet publish -c Release -o dist
+
+EXPOSE 80/tcp
+
+CMD ["dotnet", "dist/dockerContainer.dll"]

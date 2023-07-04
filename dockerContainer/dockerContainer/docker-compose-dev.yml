@@ -4,7 +4,6 @@ volumes:
         produtosdata:
 
 networks:
-        frontend:
         backend:
 
 services:
@@ -25,10 +24,9 @@ services:
         mvc:
           build:
            context: .
-           dockerfile: Dockerfile
+           dockerfile: Dockerfile.dev
           networks:
               - backend
-              - frontend
           ports:
               - 5000:80
           environment:
